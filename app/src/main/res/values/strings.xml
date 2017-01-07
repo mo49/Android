@@ -1,0 +1,4 @@
+<!-- 多言語対応できるために -->
+<resources>
+    <string name="app_name">GsApp</string>
+</resources>
