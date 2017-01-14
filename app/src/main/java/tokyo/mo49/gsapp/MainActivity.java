@@ -49,7 +49,8 @@ public class MainActivity extends ActionBarActivity {
     private void fetch() {
         //jsonデータをサーバーから取得する通信機能です。Volleyの機能です。通信クラスのインスタンスを作成しているだけです。通信はまだしていません。
         JsonObjectRequest request = new JsonObjectRequest(
-                "http://gashfara.com/test/json.txt" ,//jsonデータが有るサーバーのURLを指定します。
+                // "http://gashfara.com/test/json.txt" ,//jsonデータが有るサーバーのURLを指定します。
+                "http://weather.livedoor.com/forecast/webservice/json/v1?city=130010",
                 null,
                 //サーバー通信した結果、成功した時の処理をするクラスを作成しています。１回しか使わないのでこの書き方で良い
                 new Response.Listener<JSONObject>() {
@@ -85,14 +86,17 @@ public class MainActivity extends ActionBarActivity {
         //空のMessageRecordデータの配列を作成
         ArrayList<MessageRecord> records = new ArrayList<MessageRecord>();
         //jsonデータのmessagesにあるJson配列を取得します。
-        JSONArray jsonMessages = json.getJSONArray("messages");
+        // JSONArray jsonMessages = json.getJSONArray("messages");
+        JSONArray jsonMessages = json.getJSONArray("forecasts");
         //配列の数だけ繰り返します。
         for(int i =0; i < jsonMessages.length(); i++) {
             //１つだけ取り出します。
             JSONObject jsonMessage = jsonMessages.getJSONObject(i);
             //jsonの値を取得します。
-            String title = jsonMessage.getString("comment");
-            String url = jsonMessage.getString("imageUrl");
+            // String title = jsonMessage.getString("comment");
+            // String url = jsonMessage.getString("imageUrl");
+            String title = jsonMessage.getString("dateLabel") + System.getProperty("line.separator") + jsonMessage.getString("telop");
+            String url = jsonMessage.getJSONObject("image").getString("url");
             //jsonMessageを新しく作ります。
             MessageRecord record = new MessageRecord(url, title);
             //MessageRecordの配列に追加します。
