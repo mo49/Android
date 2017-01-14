@@ -1,6 +1,7 @@
 //ListViewに１つのセルの情報(message_item.xmlとMessageRecord)を結びつけるためのクラス
 package tokyo.mo49.gsapp;
 
+// 先にコードをかいてimportは自動的にやってくれる
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,26 +14,34 @@ import com.android.volley.toolbox.NetworkImageView;
 
 import java.util.List;
 
+/*
+デザパタ：アダプターパターン
+http://qiita.com/shoheiyokoyama/items/bd1c692db480b640c976
+*/
+
 //<MessageRecord>はデータクラスMessageRecordのArrayAdapterであることを示している。このアダプターで管理したいデータクラスを記述されば良い。
+// ArrayAdapterクラス：https://techacademy.jp/magazine/4728
+// ArrayAdapter<データクラスの指定>
 public class MessageRecordsAdapter extends ArrayAdapter<MessageRecord> {
     private ImageLoader mImageLoader;
 
     //アダプターを作成する関数。コンストラクター。クラス名と同じです。
     public MessageRecordsAdapter(Context context) {
         //レイアウトのidmessage_itemのViewを親クラスに設定している
-        super(context, R.layout.message_item);
+        super(context, R.layout.message_item); // R : Resource
         //キャッシュメモリを確保して画像を取得するクラスを作成。これを使って画像をダウンロードする。Volleyの機能
         mImageLoader = new ImageLoader(VolleyApplication.getInstance().getRequestQueue(), new BitmapLruCache());
     }
     //表示するViewを返します。これがListVewの１つのセルとして表示されます。表示されるたびに実行されます。
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        //convertViewをチェックし、Viewがないときは新しくViewを作成します。convertViewがセットされている時は未使用なのでそのまま再利用します。メモリーに優しい。
-        if(convertView == null) {
+        //convertViewをチェックし、Viewがないときは新しくViewを作成します。convertViewがセットされている時は未使用なのでそのまま再利用します。メモリーに優しい。（キャッシュ）
+        if(convertView == null) { // null -> 新規
             convertView = LayoutInflater.from(getContext()).inflate(R.layout.message_item, parent, false);
         }
 
         //レイアウトにある画像と文字のViewを所得します。
+        // message_item.xmlでandroid:id="@+id/image1"
         NetworkImageView imageView = (NetworkImageView) convertView.findViewById(R.id.image1);
         TextView textView = (TextView) convertView.findViewById(R.id.text1);
 
@@ -40,6 +49,7 @@ public class MessageRecordsAdapter extends ArrayAdapter<MessageRecord> {
         MessageRecord imageRecord = getItem(position);
 
         //mImageLoaderを使って画像をダウンロードし、Viewにセットします。
+        // imageViewにプリロード機能あり
         imageView.setImageUrl(imageRecord.getImageUrl(), mImageLoader);
         //Viewに文字をセットします。
         textView.setText(imageRecord.getComment());
@@ -50,7 +60,8 @@ public class MessageRecordsAdapter extends ArrayAdapter<MessageRecord> {
     public void setMessageRecords(List<MessageRecord> objects) {
         //ArrayAdapterを空にする。
         clear();
-        //テータの数だけMessageRecordを追加します。
+        //テータの数(objects)だけMessageRecordを追加します。
+        // MessageRecord -> クラスかつ配列
         for(MessageRecord object : objects) {
             add(object);
         }

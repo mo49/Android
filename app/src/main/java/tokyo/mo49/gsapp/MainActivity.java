@@ -34,6 +34,7 @@ public class MainActivity extends ActionBarActivity {
         setContentView(R.layout.activity_main);
 
         //アダプターを作成します。newでクラスをインスタンス化しています。
+        // this -> クラスにおける型変換
         mAdapter = new MessageRecordsAdapter(this);
 
         //ListViewのViewを取得
@@ -50,7 +51,7 @@ public class MainActivity extends ActionBarActivity {
         JsonObjectRequest request = new JsonObjectRequest(
                 "http://gashfara.com/test/json.txt" ,//jsonデータが有るサーバーのURLを指定します。
                 null,
-                //サーバー通信した結果、成功した時の処理をするクラスを作成しています。
+                //サーバー通信した結果、成功した時の処理をするクラスを作成しています。１回しか使わないのでこの書き方で良い
                 new Response.Listener<JSONObject>() {
                     @Override
                     public void onResponse(JSONObject jsonObject) {

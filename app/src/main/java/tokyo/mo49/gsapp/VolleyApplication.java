@@ -1,3 +1,7 @@
+/*
+コピペして使う
+ */
+
 //Vollyの通信クラスです。毎回このまま使います。
 //packageはこのクラスの階層を示します。このクラスの場合はcom.gashfara.mogi.gsapp.VolleyApplicationになります。
 package tokyo.mo49.gsapp;
@@ -11,6 +15,10 @@ import com.android.volley.toolbox.Volley;
 //これはクラスの定義です。このクラスを使うにはnewなどをしてインスタンス化（実態を作る）してから使います。
 //VolleyApplicationが新しいクラス名になります。
 //publicが付いていると他のクラスから使えます。privateだと使えません。
+
+// volleyをどのactivityでも使いたいのでApplicationを継承　ずっと生き続ける変数が欲しい時に使うテクニック
+// だからapplicationタグの中にnameで指定する
+
 public class VolleyApplication extends Application {
     //クラスはこのようにintのような型として使えます。
     private static VolleyApplication sInstance;
@@ -20,6 +28,7 @@ public class VolleyApplication extends Application {
     //onCreateはアプリを起動した時にOSから呼び出される関数です。よく使います。
     @Override
     public void onCreate() {
+        //自動実行
         //superは親クラスです。ですのでApplicationです。このonCreate()関数を実行しています。overrideしていますが、親のonCreate()も実行しているわけです。
         //クラス内の関数（メソッド）はクラス名.関数名()というかんじに記載します。
         super.onCreate();

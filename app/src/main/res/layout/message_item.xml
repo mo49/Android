@@ -4,8 +4,12 @@
               xmlns:tools="http://schemas.android.com/tools"
               android:orientation="horizontal"
               android:layout_width="match_parent"
-              android:layout_height="wrap_content">
+              android:layout_height="wrap_content"><!-- コンテンツの高さに応じて伸びる -->
 
+    <!--
+    http://qiita.com/tyfkda/items/3ecb84632f3411eae8bb
+    キャッシュ
+    -->
     <com.android.volley.toolbox.NetworkImageView
         android:layout_width="100dp"
         android:layout_height="100dp"
@@ -19,4 +23,7 @@
         android:textAppearance="?android:textAppearanceLarge"
         tools:text="comment"
         android:id="@+id/text1"/>
+    <!--
+    tools:text="comment" default値の設定
+    -->
 </LinearLayout>
