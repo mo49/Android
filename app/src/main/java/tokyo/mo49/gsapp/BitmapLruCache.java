@@ -1,5 +1,5 @@
 //画像をメモリにキャッシュするクラスです。メモリの1/8まで使います。汎用的なクラスなのでどのアプリでも使えます。
-package com.gashfara.mogi.gsapp;
+package tokyo.mo49.gsapp;
 
 import android.graphics.Bitmap;
 import android.support.v4.util.LruCache;
