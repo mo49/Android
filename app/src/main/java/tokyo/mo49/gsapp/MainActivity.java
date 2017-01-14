@@ -4,6 +4,7 @@ package tokyo.mo49.gsapp;
 
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.ListView;
@@ -56,6 +57,7 @@ public class MainActivity extends ActionBarActivity {
                 new Response.Listener<JSONObject>() {
                     @Override
                     public void onResponse(JSONObject jsonObject) {
+                        Log.d("mogid",jsonObject.toString());
                         //try catchでエラーを処理します。tryが必要かどうかはtryに記述している関数次第です。
                         try {
                             //jsonデータを下記で定義したparse関数を使いデータクラスにセットしています。
