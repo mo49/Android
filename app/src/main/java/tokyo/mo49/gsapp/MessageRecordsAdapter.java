@@ -67,6 +67,7 @@ public class MessageRecordsAdapter extends ArrayAdapter<MessageRecord> {
                     public void onUrlClick(TextView v,Uri uri) {
                         Log.d("myurl",uri.toString());//デバッグログを出力します。
                         // Intent のインスタンスを取得する。view.getContext()でViewの自分のアクティビティーのコンテキストを取得。遷移先のアクティビティーを.classで指定
+                        //WebActivityが起動
                         Intent intent = new Intent(view.getContext(), WebActivity.class);
 
                         // 渡したいデータとキーを指定する。urlという名前でリンクの文字列を渡しています。
@@ -81,6 +82,7 @@ public class MessageRecordsAdapter extends ArrayAdapter<MessageRecord> {
                 //リンクのチェックを行うため一時的にsetする
                 textView.setMovementMethod(m);
                 boolean mt = m.onTouchEvent(textView, (Spannable) textView.getText(), event);
+                Log.d("mt", "boolean : " + mt);
                 //チェックが終わったので解除する しないと親view(listview)に行けない
                 textView.setMovementMethod(null);
                 //setMovementMethodを呼ぶとフォーカスがtrueになるのでfalseにする

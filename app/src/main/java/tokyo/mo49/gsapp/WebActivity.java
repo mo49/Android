@@ -7,8 +7,11 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
+import android.widget.Button;
+import android.widget.Toast;
 
 
 public class WebActivity extends ActionBarActivity {
@@ -18,6 +21,18 @@ public class WebActivity extends ActionBarActivity {
         super.onCreate(savedInstanceState);
         //レイアウトをセットします
         setContentView(R.layout.activity_web);
+
+        // ボタンのオブジェクトを取得
+        Button btn = (Button)findViewById(R.id.button);
+        // クリックイベントを受け取れるようにする
+        btn.setOnClickListener(new View.OnClickListener() {
+            // このメソッドがクリック毎に呼び出される
+            public void onClick(View v) {
+                // ここにクリックされたときの処理を記述
+                Toast.makeText(getApplicationContext(), "もどりまーす", Toast.LENGTH_LONG).show();
+                Log.d("back button click", "back button click");
+            }
+        });
 
         // Intent を取得。
         //Intentでアクティビティー間のデータを受け渡しします。Intentの値を受け取るために作成。
