@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -29,7 +30,9 @@ public class WebActivity extends ActionBarActivity {
             // このメソッドがクリック毎に呼び出される
             public void onClick(View v) {
                 // ここにクリックされたときの処理を記述
-                Toast.makeText(getApplicationContext(), "びゅーん！", Toast.LENGTH_LONG).show();
+                Toast ts = Toast.makeText(getApplicationContext(), "びゅーん！", Toast.LENGTH_LONG);
+                ts.setGravity(Gravity.CENTER, 0, 0);
+                ts.show();
                 Log.d("back button click", "back button click");
                 finish();
             }
