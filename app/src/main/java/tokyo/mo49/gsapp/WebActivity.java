@@ -29,8 +29,9 @@ public class WebActivity extends ActionBarActivity {
             // このメソッドがクリック毎に呼び出される
             public void onClick(View v) {
                 // ここにクリックされたときの処理を記述
-                Toast.makeText(getApplicationContext(), "もどりまーす", Toast.LENGTH_LONG).show();
+                Toast.makeText(getApplicationContext(), "びゅーん！", Toast.LENGTH_LONG).show();
                 Log.d("back button click", "back button click");
+                finish();
             }
         });
 

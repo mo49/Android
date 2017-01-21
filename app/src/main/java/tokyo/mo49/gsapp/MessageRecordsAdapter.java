@@ -73,7 +73,7 @@ public class MessageRecordsAdapter extends ArrayAdapter<MessageRecord> {
                         // 渡したいデータとキーを指定する。urlという名前でリンクの文字列を渡しています。
                         intent.putExtra("url", uri.toString());
 
-                        // 遷移先の画面を呼び出す
+                        // 遷移先の画面（アクティビティ）を呼び出す
                         view.getContext().startActivity(intent);
 
                     }
