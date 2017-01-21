@@ -26,5 +26,6 @@
         android:id="@+id/text1"/>
     <!--
     tools:text="comment" default値の設定
+    android:autoLink="web" linkを自動作成
     -->
 </LinearLayout>

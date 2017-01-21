@@ -29,6 +29,7 @@ public class MainActivity extends ActionBarActivity {
 
     //起動時にOSから実行される関数です。
     @Override
+    //画面構築に必要な要素を設置
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         //メイン画面のレイアウトをセットしています。ListView
