@@ -36,6 +36,12 @@ public class VolleyApplication extends Application {
         mRequestQueue = Volley.newRequestQueue(this);
         //自分自身のインスタンス（newなどでクラスを実体化したもの）を代入しています。
         sInstance = this;
+
+        //Userで追加ここから
+        //KiiCloudの初期化。Applicationクラスで実行してください。キーは自分の値にかえる。
+        Kii.initialize(getApplicationContext(), "2d8d114a", "4bfbf16b64b2c86615ddb672984e3fb1", Kii.Site.JP);
+        //Userで追加ここまで
+
     }
     //インスタンスを返す関数（メソッドです）。クラスの中にある変数はこのように関数を通じて返すようにするのが一般的です。
     //synchronizedは同時に動作すると不具合が起きるときに宣言します。Volleyの仕様です。

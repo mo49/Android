@@ -27,4 +27,13 @@ dependencies {
     compile 'com.android.support:appcompat-v7:25.1.0'
     testCompile 'junit:junit:4.12'
     compile project(':modules:volley')
+
+}
+
+
+
+dependencies {
+  compile files('libs/android-cloud-sdk-v2.4.14.aar')
+  compile 'com.squareup.okhttp:okhttp:2.7.2'
+  compile 'com.squareup.okhttp:okhttp-apache:2.7.2'
 }
